@@ -8,7 +8,7 @@ Public Function IsInArray(ToBeFound As Variant, arr As Variant, NumberOfElements
         End If
     Next i
 End Function
-Sub Baseline_BOM()
+Sub BaselineBOM()
 
     'Improve Execution ------------------------------------------------------------------------------------------------------------------------------
         Application.ScreenUpdating = False
