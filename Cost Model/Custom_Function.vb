@@ -1,6 +1,6 @@
 Public Function Is_A_Part_Tab(ws As Worksheet, wb As Workbook) As Boolean 
 
-    'This macro returns true if the worksheet is a part tab, false otherwise
+    'This macro returns true if the passed worksheet is a tab for a Part in the Cost Model, false otherwise
 
     Dim Part_Tabs_Names(1 To 18) As String
 
@@ -30,5 +30,13 @@ Public Function Is_A_Part_Tab(ws As Worksheet, wb As Workbook) As Boolean
             End If
         Next Part_Section_In_FinancialsByPart
     '------------------------------------------------------------------------------------------------------------------------------------------------
+
+End Function
+
+Public Function IsInArray_1D(String_To_Find As String, arr As Variant) As Integer
+
+    'This function returns the index of the string in the array if String_To_Find is found, 0 otherwise
+
+    IsInArray_1D = InStr(Join(arr, ""), String_To_Find) 
 
 End Function

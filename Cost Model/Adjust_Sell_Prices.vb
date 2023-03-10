@@ -3,6 +3,8 @@ Sub AdjustSellPrices()
     Improve_Execution.ScreenUpdating
     
     Set Current_Tab = ActiveSheet
+
+    Sheet_Protection.OFF
     
     'Status Bar -------------------------------------------------------------------------------------------------------------------------------------
         Old_Status_Bar = Application.StatusBar
