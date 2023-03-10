@@ -22,7 +22,13 @@ Public Function Is_A_Part_Tab(ws As Worksheet, wb As Workbook) As Boolean
         Next Part_Section_In_FinancialsByPart
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
+    'Compare ws.Name to Part_Tabs_Names
+        For Part_Section_In_FinancialsByPart = 1 To 18
+            If ws.Name = Part_Tabs_Names(Part_Section_In_FinancialsByPart) Then
+                Is_A_Part_Tab = True
+                Exit Function
+            End If
+        Next Part_Section_In_FinancialsByPart
+    '------------------------------------------------------------------------------------------------------------------------------------------------
 
 End Function
-
-'42028041A FSCH
