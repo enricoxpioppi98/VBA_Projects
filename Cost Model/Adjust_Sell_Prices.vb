@@ -13,6 +13,7 @@ Sub AdjustSellPrices()
         Target_SellPrice_Address = "R40"
         Profit_Address = "B" & ActiveSheet.Columns(1).Find("Profit").Row
         FinancialsByPart_SectionHeight = ActiveSheet.Range("C30:M90").Find("INTERNAL").Row - ActiveSheet.Range("C1:M30").Find("INTERNAL").Row
+        
         ActiveWorkbook.Worksheets("Cash Flow Forecast").Activate
         SGA_Address_Row = ActiveSheet.Range("A:E").Find("Total SG&A").Row
         SGA_Address = Split(Cells(1, ActiveSheet.Rows(SGA_Address_Row).Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column).Address, "$")(1) & SGA_Address_Row
