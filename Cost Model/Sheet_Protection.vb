@@ -1,6 +1,6 @@
 Sub Toggle()
 
-    Improve_Execution.ScreenUpdating
+    Improve_Execution.ScreenUpdating_And_Calculation
     Set Active_ws = ActiveSheet
 
     'Tabs With Long Password ------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +99,6 @@ End Sub
 
 Sub Enable()
 
-    Improve_Execution.ScreenUpdating
     Set Active_ws = ActiveSheet
 
     'Tabs With Long Password ------------------------------------------------------------------------------------------------------------------------
@@ -159,42 +158,15 @@ Sub Enable()
                     End If
                 End If
             Next ws
-        Else
-            For Each ws In ActiveWorkbook.Worksheets
-                If ws.ProtectContents = True Then
-                    'Check Password Length ----------------------------------------------------------------------------------------------------------
-                        If Custom_Function.IsInArray_1D(ws.Name, Parts_With_Long_Password) > 0 Then
-                            Tab_Password_Length = "Long"
-                        ElseIf Custom_Function.IsInArray_1D(ws.Name, Parts_With_Short_Password) > 0 Then
-                            Tab_Password_Length = "Short"
-                        Else
-                            Tab_Password_Length = "Short"
-                        End If
-                    '----------------------------------------------------------------------------------------------------------------------------------
-                    If Tab_Password_Length = "Long" Then
-                        ws.Unprotect "GCM2016EconCalc"
-                    Else
-                        ws.Unprotect "GCM2016SC"
-                    End If
-                End If
-            Next ws
         End If
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
     Active_ws.Activate
-    Improve_Execution.Restore
-    
-    If Active_ws.ProtectContents = True Then
-        MsgBox "Sheet Protection Enabled."
-    Else
-        MsgBox "Sheet Protection Disabled."
-    End If
 
 End Sub
 
 Sub OFF()
 
-    Improve_Execution.ScreenUpdating
     Set Active_ws = ActiveSheet
 
     'Tabs With Long Password ------------------------------------------------------------------------------------------------------------------------
@@ -235,26 +207,8 @@ Sub OFF()
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
     'Toggle Protection ------------------------------------------------------------------------------------------------------------------------------
-        If Toggle_Protect_To = True Then
-            For Each ws In ActiveWorkbook.Worksheets
-                If ws.ProtectContents = False Then
-                    'Check Password Length ----------------------------------------------------------------------------------------------------------
-                        If Custom_Function.IsInArray_1D(ws.Name, Parts_With_Long_Password) > 0 Then
-                            Tab_Password_Length = "Long"
-                        ElseIf Custom_Function.IsInArray_1D(ws.Name, Parts_With_Short_Password) > 0 Then
-                            Tab_Password_Length = "Short"
-                        Else
-                            Tab_Password_Length = "Short"
-                        End If
-                    '----------------------------------------------------------------------------------------------------------------------------------
-                    If Tab_Password_Length = "Long" Then
-                        ws.Protect "GCM2016EconCalc"
-                    Else
-                        ws.Protect "GCM2016SC"
-                    End If
-                End If
-            Next ws
-        Else
+        If Toggle_Protect_To = False Then
+            On Error Resume Next
             For Each ws In ActiveWorkbook.Worksheets
                 If ws.ProtectContents = True Then
                     'Check Password Length ----------------------------------------------------------------------------------------------------------
@@ -268,25 +222,24 @@ Sub OFF()
                     '----------------------------------------------------------------------------------------------------------------------------------
                     If Tab_Password_Length = "Long" Then
                         ws.Unprotect "GCM2016EconCalc"
+                        ws.Unprotect "GCM2016SC"
                     Else
                         ws.Unprotect "GCM2016SC"
+                        ws.Unprotect "GCM2016EconCalc"
                     End If
+                    
                 End If
             Next ws
+            On Error GoTo 0
         End If
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
     Active_ws.Activate
-    Improve_Execution.Restore
-    
-    If Active_ws.ProtectContents = True Then
-        MsgBox "Sheet Protection Enabled."
-    Else
-        MsgBox "Sheet Protection Disabled."
-    End If
 
 End Sub
 Sub Toggle_Structure()
+
+    Improve_Execution.ScreenUpdating_And_Calculation
 
     If ActiveWorkbook.ProtectStructure = False Then
         ActiveWorkbook.Protect Password:="GCM2016SC"
@@ -295,6 +248,8 @@ Sub Toggle_Structure()
         ActiveWorkbook.Unprotect Password:="GCM2016SC"
         MsgBox "Structure protection unlocked."
     End If
+    
+    Improve_Execution.Restore
 
 End Sub
 Private Sub Enable_Structure_Before_Close(Cancel As Boolean)

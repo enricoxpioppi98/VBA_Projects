@@ -1,0 +1,39 @@
+Sub Format_SUB()
+
+    Improve_Execution.ScreenUpdating_And_Calculation
+
+    'Black Borders
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    
+    '    Selection.InsertIndent 1
+    
+    'Find First Row
+    First_Row_Selected = Selection.Rows(1).Row
+    
+    'Indent Subcomponents
+    Selection.Offset(1, 0).Resize(Selection.Rows.Count - 1, Selection.Columns.Count - 1).Select
+    Selection.InsertIndent 1
+    
+    'Yellow Highlight
+    Range("B" & First_Row_Selected & ":C" & First_Row_Selected).Interior.Color = 65535
+    
+    'Bold And Center
+    With Range("C" & First_Row_Selected)
+        .Font.Bold = True
+        .HorizontalAlignment = xlCenter
+    End With
+    
+    Improve_Execution.Restore
+
+End Sub

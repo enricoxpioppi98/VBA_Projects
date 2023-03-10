@@ -63,7 +63,7 @@ Sub AdjustSellPrices()
                     MsgBox "Run time error - Code execution took too long, please check your sell prices, Total SGA %, and SGA - Corporate %"
                     Exit Sub
                 End If
-                Range(SGA_To_Change_Address).Value = 0
+                Range(SGA_To_Change_Address).Value = 0.01
                 Range(Total_SGA_Address).GoalSeek Goal:=0.15, ChangingCell:=Range(SGA_To_Change_Address)
             Wend
         End If

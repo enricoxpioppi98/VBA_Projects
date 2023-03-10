@@ -37,10 +37,4 @@ Sub Toggle_Prepared_By()
     Active_ws.Activate
     Improve_Execution.Restore
 
-    If Active_ws.Range("G12").Value = "x" Then
-        MsgBox "Prepared By removed."
-    Else
-        MsgBox "Prepared By added."
-    End If  
-
 End Sub
