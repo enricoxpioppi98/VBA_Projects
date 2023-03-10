@@ -4,7 +4,7 @@ Sub Formatting()
     Active_ws = ActiveSheet
 
     If Active_ws.ProtectContents = True Then
-        Was_Protected = True 
+        Was_Protected = True
     Else
         Was_Protected = False
     End If
@@ -246,7 +246,7 @@ Sub Formatting()
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     Active_ws.Activate
-    If Was_Protected = True
+    If Was_Protected = True Then
         Sheet_Protection.Enable
     End If
     Improve_Execution.Restore

@@ -286,3 +286,34 @@ Sub OFF()
     End If
 
 End Sub
+Sub Toggle_Structure()
+
+    If ActiveWorkbook.ProtectStructure = False Then
+        ActiveWorkbook.Protect Password:="GCM2016SC"
+        MsgBox "Structure protection activated."
+    Else
+        ActiveWorkbook.Unprotect Password:="GCM2016SC"
+        MsgBox "Structure protection unlocked."
+    End If
+
+End Sub
+Private Sub Enable_Structure_Before_Close(Cancel As Boolean)
+
+    If ThisWorkbook.ProtectStructure = False Then
+        ThisWorkbook.Protect Password:="GCM2016SC"
+    End If
+    
+    Dim ws As Worksheet
+    
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Tab.Color = 2251504 Then
+            pw = "GCM2016EconCalc"
+        Else
+            pw = "GCM2016SC"
+        End If
+        If ws.ProtectContents = False Then
+            ws.Protect pw
+        End If
+    Next ws
+
+End Sub
