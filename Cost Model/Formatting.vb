@@ -3,7 +3,13 @@ Sub Formatting()
     Improve_Execution.ScreenUpdating
     Active_ws = ActiveSheet
 
-    'Unprotect
+    If Active_ws.ProtectContents = True Then
+        Was_Protected = True 
+    Else
+        Was_Protected = False
+    End If
+
+    Sheet_Protection.OFF
 
     ActiveWorkbook.Worksheets("Input").Activate
 
@@ -240,6 +246,9 @@ Sub Formatting()
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     Active_ws.Activate
+    If Was_Protected = True
+        Sheet_Protection.Enable
+    End If
     Improve_Execution.Restore
 
 End Sub
