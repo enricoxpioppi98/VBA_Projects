@@ -14,4 +14,7 @@ Sub Restore()
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
 
+    Application.StatusBar = oldStatusBar
+    Application.StatusBar = False
+
 End Sub
