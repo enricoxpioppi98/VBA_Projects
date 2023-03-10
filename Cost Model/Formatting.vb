@@ -1,7 +1,7 @@
 Sub Formatting()
 
     Improve_Execution.ScreenUpdating
-    Active_ws = ActiveSheet
+    Set Active_ws = ActiveSheet
 
     If Active_ws.ProtectContents = True Then
         Was_Protected = True
@@ -234,7 +234,7 @@ Sub Formatting()
                 .Value = Part_Section_In_FinancialsByPart
                 .Font.Bold = True
             End With
-        Next i
+        Next Part_Section_In_FinancialsByPart
 
         'Protect --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             If Was_Protected = 1 Then
