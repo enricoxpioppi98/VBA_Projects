@@ -15,8 +15,16 @@ Public Function Is_A_Part_Tab(ws As Worksheet, wb As Workbook, Return_To_Current
             Material_Cost_Address = "C" & ActiveSheet.Columns(1).Find(What:="Material Cost", After:=Cells(Range(Material_Cost_Address).Row, 1), LookAt:=xlWhole).Row
 
             Formula_To_Split = Range(Material_Cost_Address).Formula
-
-            Part_Tabs_Names(Part_Section_In_FinancialsByPart) = Split(Formula_To_Split, "'")(1)
+            
+            Part_Tabs_Names(Part_Section_In_FinancialsByPart) = Split(Formula_To_Split, "!")(0)
+            Part_Tabs_Names(Part_Section_In_FinancialsByPart) = Split(Part_Tabs_Names(Part_Section_In_FinancialsByPart), ">0,")(1)
+            
+            If Left(Part_Tabs_Names(Part_Section_In_FinancialsByPart), 1) = "'" Then
+                Part_Tabs_Names(Part_Section_In_FinancialsByPart) = Right(Part_Tabs_Names(Part_Section_In_FinancialsByPart), Len(Part_Tabs_Names(Part_Section_In_FinancialsByPart)) - 1)
+            End If
+            If Right(Part_Tabs_Names(Part_Section_In_FinancialsByPart), 1) = "'" Then
+                Part_Tabs_Names(Part_Section_In_FinancialsByPart) = Left(Part_Tabs_Names(Part_Section_In_FinancialsByPart), Len(Part_Tabs_Names(Part_Section_In_FinancialsByPart)) - 1)
+            End If
 
         Next Part_Section_In_FinancialsByPart
     '------------------------------------------------------------------------------------------------------------------------------------------------
@@ -46,3 +54,4 @@ Public Function IsInArray_1D(String_To_Find As String, arr As Variant) As Intege
     IsInArray_1D = InStr(Join(arr, ""), String_To_Find)
 
 End Function
+

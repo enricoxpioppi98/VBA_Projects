@@ -2,7 +2,7 @@ Sub Format_SUB()
 
     Improve_Execution.ScreenUpdating_And_Calculation
 
-    'Black Borders
+    'Add top and left medium black border to selected range
     With Selection.Borders(xlEdgeLeft)
         .LineStyle = xlContinuous
         .ColorIndex = 0
@@ -15,25 +15,29 @@ Sub Format_SUB()
         .TintAndShade = 0
         .Weight = xlMedium
     End With
-    
-    '    Selection.InsertIndent 1
-    
-    'Find First Row
-    First_Row_Selected = Selection.Rows(1).Row
-    
-    'Indent Subcomponents
-    Selection.Offset(1, 0).Resize(Selection.Rows.Count - 1, Selection.Columns.Count - 1).Select
-    Selection.InsertIndent 1
-    
-    'Yellow Highlight
-    Range("B" & First_Row_Selected & ":C" & First_Row_Selected).Interior.Color = 65535
-    
-    'Bold And Center
-    With Range("C" & First_Row_Selected)
+
+    'Highlight in yellow the first row of the selected range
+    Range("B" & Selection.Rows(1).Row & ":C" & Selection.Rows(1).Row).Interior.Color = 65535
+
+    'Bold and center the second column of the first row of the selected range
+    With Range("C" & Selection.Rows(1).Row)
         .Font.Bold = True
         .HorizontalAlignment = xlCenter
     End With
-    
+
+    'For each cell in the first column of the selected range,
+    'if the alignment is not right,
+    'increase by 1 the indentation level
+    For Each cell In Range("B" & Selection.Rows(1).Row & ":B" & Selection.Rows(1).Row + Selection.Rows.Count - 1)
+        If cell.HorizontalAlignment <> xlRight Then
+            cell.InsertIndent 1
+        End If
+    Next cell
+
+    'The first cell of the first column should be one indentation level less than all other cells in the first column
+    Range("B" & Selection.Rows(1).Row).IndentLevel = Range("B" & Selection.Rows(2).Row).IndentLevel - 1
+
     Improve_Execution.Restore
 
 End Sub
+

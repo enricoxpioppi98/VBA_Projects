@@ -1,6 +1,7 @@
 Sub Formatting()
 
-    Improve_Execution.ScreenUpdating
+    Improve_Execution.ScreenUpdating_And_Calculation
+    
     Set Active_ws = ActiveSheet
 
     If Active_ws.ProtectContents = True Then
@@ -236,19 +237,13 @@ Sub Formatting()
             End With
         Next Part_Section_In_FinancialsByPart
 
-        'Protect --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            If Was_Protected = 1 Then
-                Application.DisplayAlerts = False
-                Toggle_Sheet_Protection.Toggle_Sheet_Protection
-                Application.DisplayAlerts = True
-            End If
-        '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-    Active_ws.Activate
     If Was_Protected = True Then
         Sheet_Protection.Enable
     End If
+    
     Improve_Execution.Restore
 
 End Sub
+
