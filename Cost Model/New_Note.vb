@@ -36,6 +36,9 @@ Sub New_Note()
     Worksheets("Input").Range("C5:E5").Copy
     Worksheets("Program Summary").Range("C85").PasteSpecial xlPasteAllExceptBorders
 
+    Range("A86:V95").ClearContents
+    Range("B85:B95").ClearContents
+
     If Flag_Protected = 1 Then
         ActiveSheet.Protect pw
     End If
