@@ -189,11 +189,11 @@ Sub New_Quote()
         'In range S48:S58, set intenral color to light yellow
         Range("S48:S58").Interior.ColorIndex = 36
 
-        'Format cell R48 as Custom "[Color50]_(#,##0_)"▲";[Red]_(#,##0_)"▼";_("-"??_);_(@_)"
-        Range("S48:S50").NumberFormat = "[Color50]_(#,##0_)" & ChrW(&H25B2) & ";[Red]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("S51").NumberFormat = "[Red]_(#,##0_)" & ChrW(&H25B2) & ";[Color50]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("S52").NumberFormat = "[Red]_(0.00%_)" & ChrW(&H25B2) & ";[Color50]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("S53:S58").NumberFormat = "[Color50]_(0.00%_)" & ChrW(&H25B2) & ";[Red]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
+        'Format cell R48 as Custom "[Color50]_(#,##0_)"?";[Red]_(#,##0_)"?";_("-"??_);_(@_)"
+        Range("S48:S50").NumberFormat = " [Color50]_(#,##0_)" & ChrW(&H25B2) & ";[Red]_(#,##0_)" & ChrW(&H25BC) & ";_("" - ""??_);_(@_)"
+        Range("S51").NumberFormat = "[Red]_(#,##0_)" & ChrW(&H25B2) & ";[Color50]_(#,##0_)" & ChrW(&H25BC) & ";_("" - ""??_);_(@_)"
+        Range("S52").NumberFormat = "[Red]_(0.00%_)" & ChrW(&H25B2) & ";[Color50]_(0.00%_)" & ChrW(&H25BC) & ";_("" - ""??_);_(@_)"
+        Range("S53:S58").NumberFormat = "[Color50]_(0.00%_)" & ChrW(&H25B2) & ";[Red]_(0.00%_)" & ChrW(&H25BC) & ";_("" - ""??_);_(@_)"
 
 
     '------------------------------------------------------------------------------------------------------------------------------------------------
