@@ -9,6 +9,9 @@ Sub New_Quote()
 
         Range("C5:E5").Copy
         Range("C6").PasteSpecial xlPasteAllExceptBorders
+        
+        'Save last letter in C5
+        Previous_Level = Right(Range("C5"), 1)
 
         'Change the last letter of the string in C5 to the next letter in the alphabet. If it is Z, add an A to the end of the string.
         If Right(Range("C5"), 1) = "Z" Then
@@ -151,7 +154,7 @@ Sub New_Quote()
         Range("R48:R58").PasteSpecial xlPasteFormats
         
         'In cell R47, add "A" bolded and center aligned
-        Range("R47") = "A"
+        Range("R47") = Previous_Level
         Range("R47").Font.Bold = True
         Range("R47").HorizontalAlignment = xlCenter
 
