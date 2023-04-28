@@ -155,44 +155,45 @@ Sub New_Quote()
         Range("R47").Font.Bold = True
         Range("R47").HorizontalAlignment = xlCenter
 
-        'In cell S47, add "d" bolded and center aligned
+        'In cell S47, add "d" bolded and center aligned, column width = 15
         Range("S47") = "d"
         Range("S47").Font.Bold = True
         Range("S47").HorizontalAlignment = xlCenter
+        Columns("S:S").ColumnWidth = 15
 
-        'In range R48:R58, calculate the difference between the cell to the left with the cell 7 columns to theleft
-        Range("R48:R58").Formula = "=IFERROR(RC[-7]-RC[-1],0)"
+        'In range S48:S58 calculate the difference between the cell to the left with the cell 7 columns to theleft
+        Range("S48:S58").Formula = "=IFERROR(RC[-7]-RC[-1],0)"
 
-        'In range R48:R58, add light gray solid borders on all sides and light gray dotted lines in the center
+        'In range S48:S58 add light gray solid borders on all sides and light gray dotted lines in the center
 
-        Range("R48:R58").Borders(xlEdgeLeft).LineStyle = xlContinuous
-        Range("R48:R58").Borders(xlEdgeLeft).Weight = xlThin
-        Range("R48:R58").Borders(xlEdgeLeft).ColorIndex = 15
+        Range("S48:S58").Borders(xlEdgeLeft).LineStyle = xlContinuous
+        Range("S48:S58").Borders(xlEdgeLeft).Weight = xlThin
+        Range("S48:S58").Borders(xlEdgeLeft).ColorIndex = 15
 
-        Range("R48:R58").Borders(xlEdgeTop).LineStyle = xlContinuous
-        Range("R48:R58").Borders(xlEdgeTop).Weight = xlThin
-        Range("R48:R58").Borders(xlEdgeTop).ColorIndex = 15
+        Range("S48:S58").Borders(xlEdgeTop).LineStyle = xlContinuous
+        Range("S48:S58").Borders(xlEdgeTop).Weight = xlThin
+        Range("S48:S58").Borders(xlEdgeTop).ColorIndex = 15
 
-        Range("R48:R58").Borders(xlEdgeBottom).LineStyle = xlContinuous
-        Range("R48:R58").Borders(xlEdgeBottom).Weight = xlThin
-        Range("R48:R58").Borders(xlEdgeBottom).ColorIndex = 15
+        Range("S48:S58").Borders(xlEdgeBottom).LineStyle = xlContinuous
+        Range("S48:S58").Borders(xlEdgeBottom).Weight = xlThin
+        Range("S48:S58").Borders(xlEdgeBottom).ColorIndex = 15
 
-        Range("R48:R58").Borders(xlEdgeRight).LineStyle = xlContinuous
-        Range("R48:R58").Borders(xlEdgeRight).Weight = xlThin
-        Range("R48:R58").Borders(xlEdgeRight).ColorIndex = 15
+        Range("S48:S58").Borders(xlEdgeRight).LineStyle = xlContinuous
+        Range("S48:S58").Borders(xlEdgeRight).Weight = xlThin
+        Range("S48:S58").Borders(xlEdgeRight).ColorIndex = 15
 
-        Range("R48:R58").Borders(xlInsideHorizontal).LineStyle = xlDot
-        Range("R48:R58").Borders(xlInsideVertical).Weight = xlThin
-        Range("R48:R58").Borders(xlInsideVertical).ColorIndex = 15
+        Range("S48:S58").Borders(xlInsideHorizontal).LineStyle = xlDot
+        Range("S48:S58").Borders(xlInsideVertical).Weight = xlThin
+        Range("S48:S58").Borders(xlInsideVertical).ColorIndex = 15
 
-        'In range R48:R58, set intenral color to light yellow
-        Range("R48:R58").Interior.ColorIndex = 36
+        'In range S48:S58, set intenral color to light yellow
+        Range("S48:S58").Interior.ColorIndex = 36
 
         'Format cell R48 as Custom "[Color50]_(#,##0_)"▲";[Red]_(#,##0_)"▼";_("-"??_);_(@_)"
-        Range("R48:R50").NumberFormat = "[Color50]_(#,##0_)" & ChrW(&H25B2) & ";[Red]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("R51").NumberFormat = "[Red]_(#,##0_)" & ChrW(&H25B2) & ";[Color50]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("R52").NumberFormat = "[Red]_(0.00%_)" & ChrW(&H25B2) & ";[Color50]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
-        Range("R53:R58").NumberFormat = "[Color50]_(0.00%_)" & ChrW(&H25B2) & ";[Red]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
+        Range("S48:S50").NumberFormat = "[Color50]_(#,##0_)" & ChrW(&H25B2) & ";[Red]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
+        Range("S51").NumberFormat = "[Red]_(#,##0_)" & ChrW(&H25B2) & ";[Color50]_(#,##0_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
+        Range("S52").NumberFormat = "[Red]_(0.00%_)" & ChrW(&H25B2) & ";[Color50]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
+        Range("S53:S58").NumberFormat = "[Color50]_(0.00%_)" & ChrW(&H25B2) & ";[Red]_(0.00%_)" & ChrW(&H25BC) & ";_("-"??_);_(@_)"
 
 
     '------------------------------------------------------------------------------------------------------------------------------------------------
