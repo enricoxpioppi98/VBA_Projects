@@ -25,14 +25,23 @@ Sub Format_SUB()
         .HorizontalAlignment = xlCenter
     End With
 
-    'For each cell in the first column of the selected range,
-    'if the alignment is not right,
-    'increase by 1 the indentation level
-    For Each cell In Range("B" & Selection.Rows(1).Row & ":B" & Selection.Rows(1).Row + Selection.Rows.Count - 1)
-        If cell.HorizontalAlignment <> xlRight Then
-            cell.InsertIndent 1
-        End If
-    Next cell
+    'If the first row of the selection is greater than 17
+    'Assign the indentation level of the cell in the first column of the row above the first row of the selection
+    'To variable Indent_Level
+    If Selection.Rows(1).Row > 17 Then
+        Indent_Level = Range("B" & Selection.Rows(1).Row - 1).IndentLevel
+    End If
+    If Selection.Rows(1).Row = 17 Then
+        Indent_Level = 0
+    End If
+    If Range("B" & (Selection.Rows(1).Row - 1) & ":C" & (Selection.Rows(1).Row - 1)).Interior.Color = 65535 And Range("B" & (Selection.Rows(1).Row - 1) & ":C" & (Selection.Rows(1).Row - 1)).Borders(xlEdgeTop).Weight = xlMedium Then
+        Indent_Level = Range("B" & Selection.Rows(1).Row - 1).IndentLevel + 1
+    End If
+
+    'Apply the Indent_Level to the first cell of the first column of the selected range
+    'And Indent_Level + 1 to all other cells in the first column of the selected range
+    Range("B" & Selection.Rows(1).Row).IndentLevel = Indent_Level
+    Range("B" & Selection.Rows(2).Row & ":B" & (Selection.Rows(Selection.Rows.Count).Row)).IndentLevel = Indent_Level + 1
 
     'The first cell of the first column should be one indentation level less than all other cells in the first column
     Range("B" & Selection.Rows(1).Row).IndentLevel = Range("B" & Selection.Rows(2).Row).IndentLevel - 1
