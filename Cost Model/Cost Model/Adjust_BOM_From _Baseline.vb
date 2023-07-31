@@ -36,6 +36,20 @@ Sub Adjust_BOM_From_Baseline()
     Range("J17:J266").Copy
     Range("G17:G266").PasteSpecial xlPasteFormats
 
+    For Row = 266 To 17 Step -1
+        If Cells(Row, 2).Value <> "" Then
+            Range(Cells(Row + 2, 2), Cells(266, 2)).EntireRow.Hidden = True
+            Exit For
+        End If
+    Exit For
+
+
+    Range("B17:B266").Font.Strikethrough = False
+    Range("B17:B266").IndentLevel = 0   
+    Range("B17:B266").HorizontalAlignment = xlLeft
+    Range("B17:B266").Borders(xlEdgeLeft).LineStyle = xlContinuous
+    Range("B17:B266").Borders(xlEdgeLeft).Weight = xlThin
+
     Improve_Execution.Restore
 
 End Sub
